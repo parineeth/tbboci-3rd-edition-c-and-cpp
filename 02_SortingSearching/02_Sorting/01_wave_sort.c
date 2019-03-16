@@ -58,7 +58,7 @@ void wave_sort(int a[], int length)
     /*Sort the elements in ascending order*/
     qsort(a, length, sizeof(int), cmp_function);
 
-    /*Swap the alternate elements*/
+    /*Swap the neighboring elements*/
     for (i = 1; i < length - 1; i += 2) {
         temp = a[i];
         a[i] = a[i+1];

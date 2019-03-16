@@ -34,7 +34,7 @@ a: is the array of numbers for which the MCS should be found,
 length: number of elements. Should >= 1
 mcs_start_pos: the starting array index of the MCS is returned here
 mcs_end_pos: the ending array index of the MCS is returned here 
-Return value: Maximum continous sum of the elements 
+Return value: Maximum continuous sum of the elements 
 */
 int kadane_mcs(int a[], int length, int *mcs_start_pos, int *mcs_end_pos) {
     int i, max_local, max_global;

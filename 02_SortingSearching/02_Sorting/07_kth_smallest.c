@@ -83,6 +83,7 @@ int partition(int a[], int left, int right)
 a: array in which the kth smallest element should be found
 length: number of elements in the array
 k: value of k (can range from 0 to length - 1)
+Returns: the kth smallest element
 */
 int find_kth_smallest(int a[], int length, int k)
 {

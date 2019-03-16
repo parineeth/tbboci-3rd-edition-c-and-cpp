@@ -32,7 +32,7 @@ int are_strings_anagrams( char *str1, char *str2)
     int count1[NUM_CHARACTERS], count2[NUM_CHARACTERS];
     int is_anagram, i;
 
-    /*Initilize the counts to zero */
+    /*Initialize the counts to zero */
     memset(count1, 0, sizeof(int) * NUM_CHARACTERS);
     memset(count2, 0, sizeof(int) * NUM_CHARACTERS);
     

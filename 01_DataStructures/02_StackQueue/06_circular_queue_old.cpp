@@ -6,6 +6,11 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 */
 
+/*This is an older version of the Circular Queue implementation.
+There is no bug in this implementation. However there is a more simpler
+implementation possible. Please refer to 06_circular_queue.cpp
+for the simpler implementation*/
+
 #include <stdlib.h>
 #include <iostream>
 #include <exception>
@@ -28,15 +33,15 @@ void handle_error(void)
 template <class T> class queue
 {
     private:
-    int head; /*index of the first element in queue*/
-    int tail; /*index of free slot just after last element in queue*/
+    int head; /*index of the first element in queue. -1 if queue is empty*/
+    int tail; /*index of last element in queue. -1 if queue is empty*/
     int count; /*Number of elements currently present in the queue*/
     int max_size; /*Maximum number of elements that can be stored in the queue*/
     T *buffer; /*buffer for storing elements */
 
     public:
 
-    queue():head(0), tail(0), count(0), max_size(1) {
+    queue():head(-1), tail(-1), count(0), max_size(1) {
         buffer = new T[max_size];
     }
 
@@ -62,13 +67,16 @@ template <class T> class queue
         
             buffer = new_buffer;
             head = 0;
-            tail = count;
+            tail = count - 1;
             max_size = max_size * 2;
         }
 
-        /*Insert the element at the tail of the queue and advance the tail*/
-        buffer[tail] = new_element;
+        /*Advance the tail and insert the element at the tail of the queue*/
         tail = (tail + 1) % max_size;
+        buffer[tail] = new_element;
+
+        if (count == 0)
+            head = tail;
 
         count++;
     
@@ -84,9 +92,16 @@ template <class T> class queue
             throw exception();
 
         removed_element = buffer[head];
-        
-        /*Advance the head to the next location*/
-        head = (head + 1) % max_size; 
+
+        if (head == tail) {
+            /*There was only 1 item in the queue and that item has 
+            been removed. So reinitialize head and tail to -1*/
+            head = -1;
+            tail = -1;
+        } else {
+            /*Advance the head to the next location*/
+            head = (head + 1) % max_size; 
+        }
 
         count--;
 

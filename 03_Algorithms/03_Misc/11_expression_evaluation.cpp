@@ -42,18 +42,21 @@ void compute(stack<int>& num_stack, stack<char>& operator_stack) {
     
 }
 
-/* Helper function to check priority of operators
+/* Helper function to check precedence of operators
 stack_operator: operator that is at the top of the operator stack
 exp_operator: operator that is currently being examined in the expression
-Return value: true if the operator in the stack is higher priority than operator
-being examined in the expression
+Return value: true if the operator in the stack is equal or greater 
+precedence than operator being examined in the expression
 */
-bool is_higher_precedence(char stack_operator, char exp_operator)
+bool is_eq_or_grt_precedence(char stack_operator, char exp_operator)
 {
     if ((stack_operator == '*' || stack_operator == '/') && 
         (exp_operator == '+' || exp_operator == '-'))
         return true;
 
+    if (stack_operator == exp_operator)
+        return true;
+    
     return false;
 }
 
@@ -104,12 +107,12 @@ int evaluate_expression(const string& expression)
         } else if (expression[i] == '+' || expression[i] == '-' ||
             expression[i] == '*' || expression[i] == '/') {
             /*
-            As long as the operator in the stack is of higher priority
+            As long as the operator in the stack is of higher precedence
             than the current token in expression, keep processing the 
             two stacks 
             */
             while (!operator_stack.empty() 
-            && is_higher_precedence(operator_stack.top(), expression[i])) {
+            && is_eq_or_grt_precedence(operator_stack.top(), expression[i])) {
                 compute(num_stack, operator_stack);
             }
             operator_stack.push(expression[i]);
@@ -145,6 +148,14 @@ int main()
     test("10 + 10 * 40", 410);
 
     test("(200 - (100 + 50)) * 30 / 10", 150); 
+
+    test("2 - 6 - 7", -11);
+
+    test("2 + 5 - 1", 6);
+
+    test("5 * 6 + 40", 70);
+
+    test("7 / 10 * 100 + 87", 87);
 
     cout << "Test passed \n";
     return 0;

@@ -47,7 +47,7 @@ int find_longest_palindrome(char *str1)  {
             max_pal_len = cur_pal_len;
 
         /*Check for even length palindromes. If str1[pos], matches
-        with str1[pos+1], then compare the charcters to the left of
+        with str1[pos+1], then compare the characters to the left of
         pos with the characters to the right of pos+1
         */
         if (str1[pos] == str1[pos + 1])  {

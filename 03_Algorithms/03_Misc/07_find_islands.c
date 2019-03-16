@@ -61,7 +61,7 @@ void expand_search(int matrix[][MAX_NUM_COLS], int is_visited[][MAX_NUM_COLS],
     is_visited[cur_row][cur_col] = 1;
 
     /*For the current cell, find out if we can continue the island of 1's
-    with its neighbors. Each cell has 9 neighbors. The rows
+    with its neighbors. Each cell has 8 neighbors. The rows
     of neighbors will vary from cur_row - 1 to cur_row + 1
     The columns of the neighbors will vary from cur_col - 1
     to cur_col + 1*/

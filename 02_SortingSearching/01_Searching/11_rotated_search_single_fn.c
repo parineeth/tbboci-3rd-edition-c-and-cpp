@@ -24,7 +24,7 @@ void handle_error()
 
 
 /*
-a: array that has been sorted and rotated
+a: array that has been sorted and rotated. there should not be any duplicates
 n: number of elements in the array, n > 0
 x: element to be searched in the array
 Return value: location of the element in array if found, -1 if not found
@@ -52,7 +52,7 @@ int find_element(int a[], int n, int x)
                 start = mid + 1; /*search in region (mid+1, end)*/
         } else {
             /*
-            The upper portion (mid+1, end) is sorted even after 
+            The upper portion (mid, end) is sorted even after 
             rotations. So use this portion for taking decisions
             */
             if (a[mid] < x && x <= a[end]) 

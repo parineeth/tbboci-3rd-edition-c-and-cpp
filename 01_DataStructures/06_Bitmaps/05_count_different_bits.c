@@ -27,7 +27,7 @@ unsigned int count_different_bits(unsigned int a, unsigned int b)
     unsigned int count = 0;
 
     /*Since c = a xor b, the positions where a and b are different will 
-    be set to 1 in c. So by counting the number 1's in c, we will get the 
+    be set to 1 in c. So by counting the number of 1's in c, we will get the 
     number of bits that are different between a and b*/
     while (c != 0) {
         count++;

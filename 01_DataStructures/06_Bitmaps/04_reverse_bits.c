@@ -43,7 +43,7 @@ unsigned int reverse_integer(unsigned int input_value,
         int cur_byte_value = input_value & 0xFF;
 
         /*Left shift the result by 8 and append the reverse of the 
-        LS byte of input*/
+        least significant byte of input*/
         result = (result << 8) | reverse_table[cur_byte_value];
 
         /*Right shift out the least significant byte from the input*/

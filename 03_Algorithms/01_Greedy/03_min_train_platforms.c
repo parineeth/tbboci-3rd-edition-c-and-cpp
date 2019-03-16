@@ -65,7 +65,7 @@ int find_min_platforms(int arrival[], int departure[], int n)
     if (n == 0)
         return 0;
 
-    /*Sort arrival and departure time independantly in non-decreasing order*/
+    /*Sort arrival and departure time independently in non-decreasing order*/
     sort(arrival, n);
     sort(departure, n);
 

@@ -128,7 +128,7 @@ void solve_sudoku(int grid[][NUM_COLS], int row_nr, int col_nr)
                 solve_sudoku(grid, next_row, next_col);
             }
         }
-        /*Once we are done trying all numbers from 1-9 assign the cell
+        /*Once we are done trying all numbers from 1-9, assign the cell
         back to -1 to indicate puzzle writer has not assigned a number 
         to the cell*/
         grid[row_nr][col_nr] = -1;
